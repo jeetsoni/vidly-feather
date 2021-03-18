@@ -10,7 +10,10 @@ module.exports = function(app) {
     };
 
     // Initialize our service with any options it requires
-    app.use('/genres', new Genres(options, app));
+    app.use('/genres', (req, res, next) => {
+        console.log("IP Address", req.ip);
+        console.log("IP Address", req.connection.remoteAddress);
+    }, new Genres(options, app));
 
     // Get our initialized service so that we can register hooks
     const service = app.service('genres');
