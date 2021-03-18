@@ -13,6 +13,7 @@ module.exports = function(app) {
     app.use('/genres', (req, res, next) => {
         console.log("IP Address", req.ip);
         console.log("IP Address", req.connection.remoteAddress);
+        next();
     }, new Genres(options, app));
 
     // Get our initialized service so that we can register hooks
